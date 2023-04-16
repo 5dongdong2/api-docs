@@ -9,6 +9,7 @@ public class TestController {
     @GetMapping("/api/get/{id}")
     public MessageBodyDTO get(@PathVariable Long id, @RequestParam String queryString) {
         return MessageBodyDTO.builder()
+                .id(id)
                 .description("id: " + id + " / queryString: " + queryString)
                 .build();
     }

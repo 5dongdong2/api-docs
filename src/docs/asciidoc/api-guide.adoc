@@ -1,0 +1,32 @@
+= Spring REST Docs
+:toc: left
+:toclevels: 2
+:sectlinks:
+
+ifndef::snippets[]
+:snippets: ./build/generated-snippets
+endif::[]
+
+[[resources-get]]
+== GET
+
+[[resources-get-test]]
+=== GET
+
+==== HTTP request
+
+include::{snippets}/조회/http-request.adoc[]
+
+==== HTTP response
+
+include::{snippets}/조회/http-response.adoc[]
+
+[[resources-post]]
+== POST
+
+include::{snippets}/put/http-request.adoc[]
+
+[[resources-post-test]]
+=== POST
+
+include::{snippets}/조회/http-response.adoc[]
