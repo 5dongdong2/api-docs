@@ -78,7 +78,7 @@ class TestControllerTest {
                 .build();
 
         this.mockMvc
-                .perform(put("/api/post/{id}", id.toString())
+                .perform(put("/api/put/{id}", id.toString())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(requestBody)))
                 .andExpect(status().isOk())

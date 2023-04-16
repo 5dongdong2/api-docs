@@ -14,8 +14,8 @@ public class TestController {
                 .build();
     }
 
-    @PutMapping("/api/post/{id}")
-    public Long post(@PathVariable Long id, @RequestBody MessageBodyDTO messageBody) {
+    @PutMapping("/api/put/{id}")
+    public Long put(@PathVariable Long id, @RequestBody MessageBodyDTO messageBody) {
         return id;
     }
 }
