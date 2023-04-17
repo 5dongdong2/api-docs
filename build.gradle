@@ -50,20 +50,15 @@ asciidoctor {
     inputs.dir snippetsDir
 }
 
-task copyApiDocs(type: Copy) {
+build {
+    dependsOn asciidoctor
+}
+
+build.doLast {
     copy {
         from asciidoctor.outputDir
         into 'src/main/resources/static/docs'
     }
-}
-
-bootJar {
-    dependsOn asciidoctor, copyApiDocs
-}
-
-build {
-    dependsOn asciidoctor
-    dependsOn copyApiDocs
 }
 
 task apiDocsClean(type: Delete) {
