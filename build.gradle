@@ -23,6 +23,11 @@ ext {
     set('snippetsDir', file("build/generated-snippets"))
 }
 
+ext {
+    karateVersion = '1.4.0'
+}
+
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
@@ -36,13 +41,28 @@ dependencies {
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
 
     annotationProcessor 'org.projectlombok:lombok'
+
+    //karate
+    testImplementation "com.intuit.karate:karate-junit5:${karateVersion}"
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+}
+
+sourceSets {
+    test {
+        resources {
+            srcDir file('src/test/java')
+            exclude '**/*.java'
+        }
+    }
 }
 
 test {
     outputs.dir snippetsDir
     useJUnitPlatform()
+    systemProperty "karate.options", System.properties.getProperty("karate.options")
+    systemProperty "karate.env", System.properties.getProperty("karate.env")
+    outputs.upToDateWhen { false }
 }
 
 asciidoctor {
@@ -65,3 +85,8 @@ task apiDocsClean(type: Delete) {
     delete file('src/main/resources/static/docs')
 }
 clean.dependsOn apiDocsClean
+
+task karateDebug(type: JavaExec) {
+    classpath = sourceSets.test.runtimeClasspath
+    main = 'com.intuit.karate.cli.Main'
+}
