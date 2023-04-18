@@ -11,24 +11,24 @@ public class IntegrationTestController {
 
     private final IntegrationTestService integrationTestService;
 
-    @GetMapping("/api/get/{id}")
+    @GetMapping("/api/test/get/{id}")
     public MessageBodyDTO get(@PathVariable Long id) {
         return integrationTestService.get(id);
     }
 
-    @PostMapping("/api/post")
+    @PostMapping("/api/test/post")
     public void post(@RequestBody MessageBodyDTO messageBodyDTO) {
         integrationTestService.post(messageBodyDTO.getDescription());
     }
 
-    @PutMapping("/api/put/{id}")
+    @PutMapping("/api/test/put/{id}")
     public void put(
             @PathVariable Long id,
             @RequestBody MessageBodyDTO messageBodyDTO) {
         integrationTestService.put(messageBodyDTO);
     }
 
-    @DeleteMapping("/api/delete/{id}")
+    @DeleteMapping("/api/test/delete/{id}")
     public void delete(@PathVariable Long id) {
         integrationTestService.delete(id);
     }
