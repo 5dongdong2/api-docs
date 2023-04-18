@@ -53,7 +53,7 @@ class TestControllerTest {
                 .build();
 
         this.mockMvc
-                .perform(get("/api/get/{id}", id.toString())
+                .perform(get("/api/dock/get/{id}", id.toString())
                         .param("queryString", queryString))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
@@ -78,7 +78,7 @@ class TestControllerTest {
                 .build();
 
         this.mockMvc
-                .perform(put("/api/put/{id}", id.toString())
+                .perform(put("/api/dock/put/{id}", id.toString())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(requestBody)))
                 .andExpect(status().isOk())

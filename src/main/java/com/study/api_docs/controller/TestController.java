@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class TestController {
 
-    @GetMapping("/api/get/{id}")
+    @GetMapping("/api/dock/get/{id}")
     public MessageBodyDTO get(@PathVariable Long id, @RequestParam String queryString) {
         return MessageBodyDTO.builder()
                 .id(id)
@@ -14,7 +14,7 @@ public class TestController {
                 .build();
     }
 
-    @PutMapping("/api/put/{id}")
+    @PutMapping("/api/dock/put/{id}")
     public Long put(@PathVariable Long id, @RequestBody MessageBodyDTO messageBody) {
         return id;
     }
